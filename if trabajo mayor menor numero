@@ -1,0 +1,58 @@
+/* un programa que permita ingresar 3 numeros por teclado y determine cual es el menor */
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int n1,n2,n3;//variables de entrada
+    int menor,mayor;// variable de salida 
+    cout<<"****PROGRAMA QUE DETERMINA TRES NUMERO****"<<endl<<endl;
+    cout<<"ingrese los 3 valores a operar: ";
+    cin>>n1>>n2>>n3;
+    
+    if (n1<=n2 && n1<=n3)
+    {                                                                                                          
+        menor=n1;
+    }
+    else
+    {
+        if (n2<=n3 && n2<=n3)
+        {
+            menor=n2;
+        }
+        else
+        {
+            if(n3<=n1 && n3<=n2)
+            {
+                menor=n3;
+            }
+            
+        }
+    }
+    if (n1>=n2 && n1>=n3)
+    {                                                                                                          
+        mayor=n1;
+    }
+    else
+    {
+        if (n2>=n3 && n2>=n3)
+        {
+            mayor=n2;
+        }
+        else
+        {
+            if(n3>=n1 && n3>=n2)
+            {
+            mayor=n3;
+            }
+            
+        }
+    }
+        
+    cout<<" ingresaron los sgtes valores: "<<n1<<"---"<<n2<<"---"<<n3<<"---"<<endl;
+    cout<<" el menor numero es: "<<menor<<endl;
+     cout<<" el mayor numero es: "<<mayor<<endl;
+    return 0;
+
+}
