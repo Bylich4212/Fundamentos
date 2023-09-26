@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Ingrese un numero n: ";
+    cin >> n;
+
+    int suma_pares = 0;
+    int suma_impares = 0;
+
+    for (int i = 1; i <= n; i++) {
+        if (i % 2 == 0) {
+            suma_pares += i;
+        } else {
+            suma_impares += i;
+        }
+    }
+
+    cout << "La sumatoria de numeros pares hasta " << n << " es: " << suma_pares << endl;
+    cout << "La sumatoria de numeros impares hasta " << n << " es: " << suma_impares << endl;
+
+    return 0;
+}
