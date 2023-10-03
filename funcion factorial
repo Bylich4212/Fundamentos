@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+// Función para calcular el factorial
+int factorial(int n) {
+    if (n == 0 || n == 1)
+        return 1;
+    else
+        return n * factorial(n - 1);
+}
+
+int main() {
+    int num;
+    cout << "Ingresa un número entero no negativo: ";
+    cin >> num;
+
+    if (num < 0)
+        cout << "No se puede calcular el factorial de un número negativo." << endl;
+    else
+        cout << "El factorial de " << num << " es " << factorial(num) << endl;
+
+    return 0;
+}
