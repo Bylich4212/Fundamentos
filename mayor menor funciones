@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+//prototipo
+int mayorde(int a, int b, int c);
+int main()
+{
+    int num1, num2, num3;
+    do {
+        cout << "ingresa el primer numero" << endl; cin >> num1;
+   } while (num1 < 0);
+   do {
+       cout << "ingresa el primer numero" << endl; cin >> num2;
+   } while (num2 < 0);
+    do {
+        cout << "ingresa el primer numero" << endl; cin >> num3;
+   } while (num3 < 0);
+   cout << "el mayor de los tres numeros es: " << mayorde(num1, num2, num3) << endl;
+   
+}
+
+//declaracion de la funcion 
+int mayorde(int a, int b, int c)
+{
+    if ((a > b) && (a > c))
+        return a;
+    if ((b > a) && (b > c))
+        return b;
+    if ((c > b) && (c > a))
+        return c;
+    if ((a == b) && (a == c))
+        return a;
+
+}
