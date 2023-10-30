@@ -1,0 +1,29 @@
+using namespace std;
+usuario::usuario(string _login, :string _password)
+{
+    login = _login;
+    password = _password;
+}
+
+class Usuario {
+private:
+    string usuario;
+    string password;
+
+public:
+    void setUsuario(string nombreUsuario) {
+        usuario = nombreUsuario;
+    }
+
+    void setPassword(string contrasena) {
+        password = contrasena;
+    }
+
+    string getUsuario() const {
+        return usuario;
+    }
+
+    string getPassword() const {
+        return password;
+    }
+};
