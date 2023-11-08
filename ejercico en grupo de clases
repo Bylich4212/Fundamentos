@@ -1,0 +1,79 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string productos[100];
+    double precios[100];
+    int cantidadProductos = 0;
+
+    while (true) {
+        cout << "Seleccione una opción:" << endl;
+        cout << "1. Registrar Producto y Precio" << endl;
+        cout << "2. Calcular Precio Total" << endl;
+        cout << "3. Encontrar Producto más Caro" << endl;
+        cout << "4. Mostrar Lista de Productos y Precios" << endl;
+        cout << "5. Salir" << endl;
+
+        string opcion;
+        cin >> opcion;
+
+        switch (opcion[0]) {
+            case '1':
+                cout << "Ingrese el nombre del producto: ";
+                string producto;
+                cin.ignore();
+                getline(cin, producto);
+                cout << "Ingrese el precio del producto: ";
+                double precio;
+                cin >> precio;
+
+                productos[cantidadProductos] = producto;
+                precios[cantidadProductos] = precio;
+                cantidadProductos++;
+
+                break;
+
+            case '2':
+                double precioTotal = 0;
+                for (int i = 0; i < cantidadProductos; i++) {
+                    precioTotal += precios[i];
+                }
+                cout << "Precio Total: $" << precioTotal << endl;
+                break;
+
+            case '3':
+                if (cantidadProductos > 0) {
+                    double precioMasAlto = precios[0];
+                    string productoMasCaro = productos[0];
+                    for (int i = 1; i < cantidadProductos; i++) {
+                        if (precios[i] > precioMasAlto) {
+                            precioMasAlto = precios[i];
+                            productoMasCaro = productos[i];
+                        }
+                    }
+                    cout << "Producto más caro: " << productoMasCaro << " ($" << precioMasAlto << ")" << endl;
+                } else {
+                    cout << "No hay productos registrados." << endl;
+                }
+                break;
+
+            case '4':
+                cout << "Lista de Productos y Precios:" << endl;
+                for (int i = 0; i < cantidadProductos; i++) {
+                    cout << productos[i] << " ($" << precios[i] << ")" << endl;
+                }
+                break;
+
+            case '5':
+                cout << "Saliendo del programa." << endl;
+                return 0;
+
+            default:
+                cout << "Opción no válida. Por favor, seleccione una opción válida." << endl;
+                break;
+        }
+    }
+
+    return 0;
+}
