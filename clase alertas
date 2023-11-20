@@ -1,0 +1,45 @@
+#include "Alertas.h"
+#include <iostream>
+
+Alertas::Alertas() : alertas(new std::string[maxAlertas]), numAlertas(0) {
+    // Agregar algunas alertas predeterminadas
+    agregarAlerta("¡Alerta 1!");
+    agregarAlerta("¡Alerta 2!");
+    agregarAlerta("¡Alerta 3!");
+}
+
+Alertas::~Alertas() {
+    delete[] alertas;
+}
+
+void Alertas::agregarAlerta(const std::string& mensaje) {
+    if (numAlertas < maxAlertas) {
+        alertas[numAlertas++] = mensaje;
+    }
+    else {
+        std::cout << "La lista de alertas está llena, no se pueden agregar más alertas." << std::endl;
+    }
+}
+
+void Alertas::mostrarAlertas() const {
+    std::cout << "Alertas recientes:" << std::endl;
+    for (int i = 0; i < numAlertas; ++i) {
+        std::cout << "- " << alertas[i] << std::endl;
+    }
+}
+#pragma once
+#include <string>
+
+class Alertas {
+private:
+    std::string* alertas;
+    int numAlertas;
+    static const int maxAlertas = 50; // Definir un máximo de alertas
+
+public:
+    Alertas();
+    ~Alertas();
+
+    void agregarAlerta(const std::string& mensaje);
+    void mostrarAlertas() const;
+};
