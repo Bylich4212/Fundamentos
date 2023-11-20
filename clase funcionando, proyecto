@@ -1,0 +1,67 @@
+#include "Comunidad.h"                                                                                                        
+#include <iostream>          
+
+Comunidad::Comunidad() : miembros(new std::string[maxMiembros]), numMiembros(0) {}
+
+Comunidad::~Comunidad() {
+    delete[] miembros;
+}
+
+void Comunidad::agregarMiembro(const std::string& nombre) {
+    if (numMiembros < maxMiembros) {
+        miembros[numMiembros++] = nombre;
+    }
+    else {
+        std::cout << "La comunidad está llena, no se puede agregar más miembros." << std::endl;
+    }
+}
+
+void Comunidad::mostrarMiembros() const {
+    std::cout << "Miembros de la comunidad:" << std::endl;
+    for (int i = 0; i < numMiembros; ++i) {
+        std::cout << "- " << miembros[i] << std::endl;
+    }
+}
+#pragma once
+#include <string>
+
+class Comunidad {
+private:
+    std::string* miembros;
+    int numMiembros;
+    static const int maxMiembros = 100; // Definir un máximo de miembros
+
+public:
+    Comunidad();
+    ~Comunidad();
+
+    void agregarMiembro(const std::string& nombre);
+    void mostrarMiembros() const;
+};
+#include <iostream>
+#include "Comunidad.h"
+
+int main() {
+    // Crear una instancia de la clase Comunidad
+    Comunidad comunidad;
+
+    // Agregar miembros manualmente
+    std::string nuevoMiembro;
+    char agregarOtro;
+
+    do {
+        std::cout << "Ingrese el nombre de un nuevo miembro: ";
+        std::cin >> nuevoMiembro;
+
+        comunidad.agregarMiembro(nuevoMiembro);
+
+        std::cout << "¿Desea agregar otro miembro? (y/n): ";
+        std::cin >> agregarOtro;
+
+    } while (agregarOtro == 'y' || agregarOtro == 'Y');
+
+    // Mostrar los miembros de la comunidad
+    comunidad.mostrarMiembros();
+
+    return 0;
+}
