@@ -1,0 +1,49 @@
+#include "Compras.h"
+#include <iostream>
+
+Compras::Compras() : items(new std::string[maxItems]), precios(new double[maxItems]), numItems(0) {
+    // Agregar algunos items predeterminados
+    agregarItem("Dispositivo1", 50.0);
+    agregarItem("Dispositivo2", 30.0);
+    agregarItem("Dispositivo3", 25.0);
+}
+
+Compras::~Compras() {
+    delete[] items;
+    delete[] precios;
+}
+
+void Compras::agregarItem(const std::string& nombre, double precio) {
+    if (numItems < maxItems) {
+        items[numItems] = nombre;
+        precios[numItems] = precio;
+        ++numItems;
+    }
+    else {
+        std::cout << "La lista de compras está llena, no se pueden agregar más items." << std::endl;
+    }
+}
+
+void Compras::mostrarItems() const {
+    std::cout << "Lista de compras:" << std::endl;
+    for (int i = 0; i < numItems; ++i) {
+        std::cout << "- " << items[i] << " ($" << precios[i] << ")" << std::endl;
+    }
+}
+#pragma once
+#include <string>
+
+class Compras {
+private:
+    std::string* items;
+    double* precios;
+    int numItems;
+    static const int maxItems = 50; // Definir un máximo de items
+
+public:
+    Compras();
+    ~Compras();
+
+    void agregarItem(const std::string& nombre, double precio);
+    void mostrarItems() const;
+};
